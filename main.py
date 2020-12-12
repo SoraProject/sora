@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import os
 import pathlib
-from utils import cog_loader as loader
+from utils import cog_loader as loader, Dropbox as dropbox
 
 TOKEN = os.environ['TOKEN']
 command_prefix = ['!'] #Prefix
@@ -24,6 +24,8 @@ class MyBot(commands.Bot):
             folder_name = 'cogs'
             loader().cog_load(self, f'{folder_name}/*.py')
 
+            await dropbox().download_database()
+
             print('------')
             self.ready_check = True
         
@@ -31,7 +33,7 @@ class MyBot(commands.Bot):
             print('The start up process is already complete!')
 
 
-intent: discord.Intents = discord.Intents.default()
+intent: discord.Intents = discord.Intents.all()
 bot = MyBot(command_prefix=command_prefix, intents=intent)
 
 bot.run(TOKEN)
