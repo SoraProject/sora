@@ -18,18 +18,15 @@ class MyBot(commands.Bot):
         if self.ready_check == False:
 
             print(f'import')
-            if not self.loaded:
-                import pathlib
-                cur = pathlib.Path('.')
-                for p in cur.glob('module/*.py'):
-                    try:
-                        print(f'module.{p.stem}', end="　")
-                        self.load_extension(f'module.{p.stem}')
-                        print(f'success')
-                    except commands.errors.NoEntryPointError:
-                        print(f'module.{p.stem}')
-            else:
-                self.loaded = True
+            import pathlib
+            cur = pathlib.Path('.')
+            for p in cur.glob('module/*.py'):
+                try:
+                    print(f'module.{p.stem}', end="　")
+                    self.load_extension(f'module.{p.stem}')
+                    print(f'success')
+                except commands.errors.NoEntryPointError:
+                    print(f'module.{p.stem}')
             print('------')
 
             await dropbox().download_database()
