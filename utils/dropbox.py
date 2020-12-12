@@ -7,7 +7,7 @@ class Dropbox:
     def __init__(self):
         self.database = Database()
         self.DROPBOX_TOKEN = os.environ["DROPBOX_TOKEN"]
-        self.dbx = dropbox
+        self.dbx = dropbox.Dropbox(self.DROPBOX_TOKEN)
         self.database_name = "sora.db"
 
     def upload_database(self, database_name =None):
