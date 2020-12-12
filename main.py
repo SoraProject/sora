@@ -3,7 +3,7 @@ import discord
 from discord.ext import commands
 import os
 import pathlib
-from utils import cog_loader as loader, Dropbox as dropbox
+from utils import Dropbox as dropbox
 
 TOKEN = os.environ['TOKEN']
 command_prefix = ['!'] #Prefix
