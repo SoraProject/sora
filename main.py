@@ -29,7 +29,7 @@ class MyBot(commands.Bot):
                     print(f'module.{p.stem}')
             print('------')
 
-            await dropbox().download_database()
+            dropbox().download_database()
 
             print('------')
             self.ready_check = True
