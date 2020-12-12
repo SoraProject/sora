@@ -17,12 +17,20 @@ class MyBot(commands.Bot):
 
         if self.ready_check == False:
 
-            print('Logged in as')
-            print(self.user.name)
-            print(self.user.id)
             print(f'import')
-            folder_name = 'cogs'
-            loader().cog_load(self, f'{folder_name}/*.py')
+            if not self.loaded:
+                import pathlib
+                cur = pathlib.Path('.')
+                for p in cur.glob('module/*.py'):
+                    try:
+                        print(f'module.{p.stem}', end="　")
+                        self.load_extension(f'module.{p.stem}')
+                        print(f'success')
+                    except commands.errors.NoEntryPointError:
+                        print(f'module.{p.stem}')
+            else:
+                self.loaded = True
+            print('------')
 
             await dropbox().download_database()
 
