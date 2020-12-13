@@ -23,7 +23,7 @@ class MyBot(commands.Bot):
             for p in cur.glob('cogs/*.py'):
                 try:
                     print(f'module.{p.stem}', end="　")
-                    self.load_extension(f'module.{p.stem}')
+                    self.load_extension(f'cogs.{p.stem}')
                     print(f'success')
                 except commands.errors.NoEntryPointError:
                     print(f'module.{p.stem}')
