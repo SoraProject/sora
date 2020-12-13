@@ -15,7 +15,7 @@ class Cog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_member_join(self, member: discord.Member):
-        if self.check_guild.is_guild(member.guild, self.waf_guild) and self.database.has_database():
+        if self.check_guild.is_guild(member.guild, WafGuild) and self.database.has_database():
             member_datas: list = await self.database.fetch_database(self.waf_guild.whitelist_table)
             if not member.id in member_datas:
                 await member.send(f"{member.mention}->あなたは#WAFのホワイトリストに追加されていないためキックされました。管理人に追加してほしい旨をお伝え下さい。")
