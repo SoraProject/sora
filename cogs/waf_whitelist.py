@@ -22,10 +22,11 @@ class Cog(commands.Cog):
                 await member.kick(reason="ホワイトリストにいないため")
 
     @commands.command()
-    async def add_whitelist(self, ctx: commands.Context, member: discord.Member):
+    async def add_whitelist(self, ctx: commands.Context, user: discord.User):
         waiting = await message.waiting(ctx)
         if (await BotPermission.is_admin(self.bot, ctx.author)):
-            await self.database.add_data("waf_white_list", data=[member.id])
+            await self.database.add_data("waf_white_list", data=[user.id])
+            await waiting.edit(content=f"{ctx.author.mention}->{user}をホワイトリストに追加しました！")
         
 
 def setup(bot):
