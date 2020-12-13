@@ -20,7 +20,7 @@ class MyBot(commands.Bot):
             print(f'import')
             import pathlib
             cur = pathlib.Path('.')
-            for p in cur.glob('module/*.py'):
+            for p in cur.glob('cogs/*.py'):
                 try:
                     print(f'module.{p.stem}', end="　")
                     self.load_extension(f'module.{p.stem}')
