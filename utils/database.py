@@ -38,7 +38,7 @@ class Database:
             await c.execute(f"SELECT * FROM {table_name}")
             datas_ = await c.fetchall()
             print(type(datas))
-            for data in datas:
+            for data in datas_:
                 datas += data
         
         except Exception as e:
