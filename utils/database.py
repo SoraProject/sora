@@ -57,7 +57,7 @@ class Database:
         conn: aiosqlite3.Connection = await aiosqlite3.connect(db)
         c: aiosqlite3.Cursor = await conn.cursor()
 
-        await c.execute(f"INSERT INTO {table_name} VALUES({[i for i in data]})")
+        await c.execute(f"INSERT INTO {table_name} VALUES({["'"+ i + "'" for i in data]})")
         await conn.commit()
         await conn.close()
 
