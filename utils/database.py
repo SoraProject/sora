@@ -36,8 +36,7 @@ class Database:
         
         try:
             await c.execute(f"SELECT * FROM {table_name}")
-            async for row in c.fetchall():
-                datas += row
+            datas = c.fetchall()
         
         except Exception as e:
             print(e)
