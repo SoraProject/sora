@@ -35,7 +35,8 @@ class Database:
         datas = []
         
         try:
-            async for row in c.execute(f"SELECT * FROM {table_name}"):
+            await c.execute(f"SELECT * FROM {table_name}")
+            async for row in c.fetch_all():
                 datas += row
         
         except Exception as e:
