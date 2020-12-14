@@ -37,6 +37,7 @@ class Database:
         try:
             await c.execute(f"SELECT * FROM {table_name}")
             datas_ = await c.fetchall()
+            print(type(datas))
             for data in datas:
                 datas += data
         
