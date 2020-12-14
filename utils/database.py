@@ -38,7 +38,8 @@ class Database:
             async for row in c.execute(f"SELECT * FROM {table_name}"):
                 datas += row
         
-        except:
+        except Exception as e:
+            print(e)
             return None
         
         return datas
