@@ -17,8 +17,8 @@ class MlbbAutoVc(commands.Cog):
 
         if member.voice is None:
             await self.voice.clean_null_auto_text_channels(
-                category,
-                await self.voice.clean_null_auto_voice_channels(category)
+                before.channel.category,
+                await self.voice.clean_null_auto_voice_channels(before.channel.category)
             )
 
         if not member.guild.id == self.bot.mlbb_guild_id:
