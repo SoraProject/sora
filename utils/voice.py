@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from yonosumi_utils import my_channel
+from utils import my_channel
 from typing import Union, Callable, List
 
 import yonosumi_utils
