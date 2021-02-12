@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from utils import voice, my_channel
+from utils import voice, my_channel, Message
 
 reaction_list = ["✏", "🔒", "👀"]
 
@@ -98,7 +98,7 @@ class MlbbAutoVc(commands.Cog):
 
         if str(payload.emoji) == "✏":
 
-            msg = await self.msg.question(
+            msg = await Message.question(
                 bot=self.bot,
                 main_object=message,
                 member=payload.member,
@@ -124,7 +124,7 @@ class MlbbAutoVc(commands.Cog):
 
         elif str(payload.emoji) == "🔒":
 
-            msg = await self.msg.question(
+            msg = await Message.question(
                 bot=self.bot,
                 main_object=message,
                 member=payload.member,
