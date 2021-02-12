@@ -6,16 +6,18 @@ import pathlib
 from utils import Dropbox as dropbox
 
 TOKEN = os.environ['TOKEN']
-command_prefix = ['!'] #Prefix
+command_prefix = ['!']  # Prefix
+
 
 class MyBot(commands.Bot):
     def __init__(self, *args, **kwargs):
         self.ready_check = False  # Variable to prevent duplicate on_ready events from being triggered
+        self.mlbb_guild_id = 807562875996209172
         super().__init__(*args, **kwargs)
 
     async def on_ready(self):
 
-        if self.ready_check == False:
+        if self.ready_check is False:
 
             print(f'import')
             import pathlib
@@ -33,7 +35,7 @@ class MyBot(commands.Bot):
 
             print('------')
             self.ready_check = True
-        
+
         else:
             print('The start up process is already complete!')
 
