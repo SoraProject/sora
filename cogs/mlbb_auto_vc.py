@@ -14,6 +14,10 @@ class MlbbAutoVc(commands.Cog):
     @commands.Cog.listener()
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState,
                                     after: discord.VoiceState):
+
+        if not member.voice.channel:
+            return
+
         if not member.guild.id == self.bot.mlbb_guild_id:
             return
 
@@ -38,7 +42,12 @@ class MlbbAutoVc(commands.Cog):
             else:
                 limit = None
 
-            vc: discord.VoiceChannel = await author_channel.category.create_voice_channel(name=f"{member.nick}のVC",
+            if member.nick:
+                ch_name = member.nick
+            else:
+                ch_name = member.display_name
+
+            vc: discord.VoiceChannel = await author_channel.category.create_voice_channel(name=f"{ch_name}のVC",
                                                                                           limit=limit)
             await member.move_to(vc, reason="VCが生成されたため")
             muted_tc = await author_channel.category.create_text_channel(name=f"{member.nick}の聞き専チャンネル",
