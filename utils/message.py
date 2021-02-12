@@ -4,7 +4,7 @@ from typing import Union
 import discord
 from discord.ext import commands
 
-from utils.embed import YonosumiEmbed
+from utils.embed import SoraEmbed
 
 
 class Message:
