@@ -15,8 +15,11 @@ class MlbbAutoVc(commands.Cog):
     async def on_voice_state_update(self, member: discord.Member, before: discord.VoiceState,
                                     after: discord.VoiceState):
 
-        if not member.voice:
-            return
+        if member.voice is None:
+            await self.voice.clean_null_auto_text_channels(
+                category,
+                await self.voice.clean_null_auto_voice_channels(category)
+            )
 
         if not member.guild.id == self.bot.mlbb_guild_id:
             return
@@ -50,7 +53,7 @@ class MlbbAutoVc(commands.Cog):
             vc: discord.VoiceChannel = await author_channel.category.create_voice_channel(name=f"{ch_name}のVC",
                                                                                           limit=limit)
             await member.move_to(vc, reason="VCが生成されたため")
-            muted_tc = await author_channel.category.create_text_channel(name=f"{member.nick}の聞き専チャンネル",
+            muted_tc = await author_channel.category.create_text_channel(name=f"{ch_name}の聞き専チャンネル",
                                                                          topic=voice.generate_auto_voice_topic(
                                                                              member=member, vc=vc))
             embed = discord.Embed(title=f"{member.nick}のVCへようこそ！",
