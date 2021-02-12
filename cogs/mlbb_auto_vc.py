@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from utils import voice
+from utils import voice, my_channel
 
 reaction_list = ["✏", "🔒", "👀"]
 
@@ -112,7 +112,7 @@ class MlbbAutoVc(commands.Cog):
             question = msg['question']
 
             if len(result.content) > 0:
-                vc_id = int(utils.get_topic(channel, split=True)[1])
+                vc_id = int(my_channel.get_topic(channel, split=True)[1])
                 if vc_id is None:
                     return await question.edit(content=f"{payload.member.mention}->不明なエラーが発生しました！")
 
@@ -143,7 +143,7 @@ class MlbbAutoVc(commands.Cog):
                 return await question.edit(content=f"{payload.member.mention}->不正な値が渡されました！")
 
             if not num > 100:
-                vc_id = int(utils.get_topic(channel, split=True)[1])
+                vc_id = int(my_channel.get_topic(channel, split=True)[1])
                 if vc_id is None:
                     return await question.edit(content=f"{payload.member.mention}->不明なエラーが発生しました！")
                 vc = self.bot.get_channel(vc_id)
