@@ -111,7 +111,7 @@ class voice:
         自動生成されたチャンネルのオーナーのメンバーオブジェクトを返します。
         取得できなかった場合はNoneが返ります。
         """
-        owner_id = yonosumi_utils.get_topic(channel, split=True)[2]
+        owner_id = utils.get_topic(channel, split=True)[2]
         try:
             return await channel.guild.fetch_member(int(owner_id))
         except:
