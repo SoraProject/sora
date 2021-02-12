@@ -52,7 +52,7 @@ class MlbbAutoVc(commands.Cog):
             await member.move_to(vc, reason="VCが生成されたため")
             muted_tc = await author_channel.category.create_text_channel(name=f"{member.nick}の聞き専チャンネル",
                                                                          topic=voice.generate_auto_voice_topic(
-                                                                             member=member))
+                                                                             member=member, vc=vc))
             embed = discord.Embed(title=f"{member.nick}のVCへようこそ！",
                                   description=voice.control_panel_description())
             msg = await muted_tc.send(embed=embed)
