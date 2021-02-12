@@ -4,7 +4,7 @@ from typing import Union
 import discord
 from discord.ext import commands
 
-from yonosumi_utils.embed import YonosumiEmbed
+from utils.embed import YonosumiEmbed
 
 
 class Message:
