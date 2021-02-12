@@ -3,8 +3,6 @@ from discord.ext import commands
 from utils import my_channel
 from typing import Union, Callable, List
 
-import yonosumi_utils
-
 
 class voice:
 
