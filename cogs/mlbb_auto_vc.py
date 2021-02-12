@@ -17,6 +17,9 @@ class MlbbAutoVc(commands.Cog):
         if not member.guild.id == self.bot.mlbb_guild_id:
             return
 
+        if not self.voice.is_generate_voice_channel(member.voice.channel):
+            return
+
         rank_vc_id = 807784369166352384
         match_vc_id = 807784449067843584
         talk_vc_id = 808647004410478592
