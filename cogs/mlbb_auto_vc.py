@@ -5,6 +5,7 @@ from utils import voice
 reaction_list = ["✏", "🔒", "👀"]
 
 
+# noinspection PyTypeChecker
 class MlbbAutoVc(commands.Cog):
 
     def __init__(self, bot):

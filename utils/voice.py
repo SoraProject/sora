@@ -64,7 +64,7 @@ class voice:
         指定されたチャンネルが生成されたボイスチャンネルか確認します。
         """
         voice_category_ids = [807783200566411315, 808299132513943553, 808646855055376405]
-        if voice_category_ids in channel.category.id and not self.is_generate_voice_channel(
+        if channel.category.id in voice_category_ids and not self.is_generate_voice_channel(
                 channel) and channel != channel.guild.afk_channel:
             return True
         else:
