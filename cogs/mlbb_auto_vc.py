@@ -21,11 +21,12 @@ class MlbbAutoVc(commands.Cog):
                 before.channel.category,
                 await self.voice.clean_null_auto_voice_channels(before.channel.category)
             )
-
-        if not member.guild.id == self.bot.mlbb_guild_id:
             return
 
-        if not self.voice.is_generate_voice_channel(member.voice.channel):
+        elif not member.guild.id == self.bot.mlbb_guild_id:
+            return
+
+        elif not self.voice.is_generate_voice_channel(member.voice.channel):
             return
 
         rank_vc_id = 807784369166352384
@@ -57,7 +58,7 @@ class MlbbAutoVc(commands.Cog):
             muted_tc = await author_channel.category.create_text_channel(name=f"{ch_name}の聞き専チャンネル",
                                                                          topic=voice.generate_auto_voice_topic(
                                                                              member=member, vc=vc))
-            embed = discord.Embed(title=f"{member.nick}のVCへようこそ！",
+            embed = discord.Embed(title=f"{ch_name}のVCへようこそ！",
                                   description=voice.control_panel_description())
             msg = await muted_tc.send(embed=embed)
 
@@ -119,7 +120,7 @@ class MlbbAutoVc(commands.Cog):
 
                 await channel.edit(name=result.content)
                 await vc.edit(name=result.content)
-                await channel.send(f"{payload.member.mention}->チャンネル名を``{result.content}``に変更しました！")
+                await channel.send(f"{payload.member.mention}->チャンネル名を`{result.content}`に変更しました！")
 
         elif str(payload.emoji) == "🔒":
 
@@ -147,7 +148,7 @@ class MlbbAutoVc(commands.Cog):
                     return await question.edit(content=f"{payload.member.mention}->不明なエラーが発生しました！")
                 vc = self.bot.get_channel(vc_id)
                 await vc.edit(user_limit=num)
-                await channel.send(f"{payload.member.mention}->VCの参加可能人数を``{num}人``に変更しました！")
+                await channel.send(f"{payload.member.mention}->VCの参加可能人数を`{num}人`に変更しました！")
             else:
                 return await question.edit(content=f"{payload.member.mention}->100人以上は指定できません！")
 
@@ -200,7 +201,7 @@ class MlbbAutoVc(commands.Cog):
                 )
 
             await channel.send(
-                content=f"{payload.member.mention}->このVCを``{result}``にしました！"
+                content=f"{payload.member.mention}->このVCを`{result}`にしました！"
             )
 
 
