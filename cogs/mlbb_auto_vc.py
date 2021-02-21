@@ -27,6 +27,8 @@ class MlbbAutoVc(commands.Cog):
             return
 
         elif not self.voice.is_generate_voice_channel(member.voice.channel):
+            linked_channel = voice.get_linked_mute_channel(member.voice.channel.category, member.voice)
+            await linked_channel.send(f"> {member}がVCに参加しました")
             return
 
         rank_vc_id = 807784369166352384

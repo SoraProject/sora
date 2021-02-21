@@ -133,3 +133,11 @@ class voice:
         コントロールパネルのdescriptionを呼び出すショートカット関数です。
         """
         return "ここでは、該当するリアクションを押すことで様々な設定を行うことが出来ます。\n\n✏：チャンネル名の変更\n\n🔒：利用可能人数の制限"
+
+    @staticmethod
+    def get_linked_mute_channel(category: discord.CategoryChannel, vc: discord.VoiceChannel):
+        for i in category.channels:
+            topic = my_channel.get_topic(i, split=True)
+            if topic[1] == vc.id:
+                return i
+
