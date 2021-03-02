@@ -5,7 +5,7 @@ import asyncio
 
 class Cog(commands.Cog):
 
-    def __init__(self):
+    def __init__(self, bot):
         self.bot = bot
         self.rank_dir = {
             ("Gミシック", "Gミシ"): 812658464039370792,
