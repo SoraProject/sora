@@ -49,7 +49,7 @@ class Cog(commands.Cog):
         for role_id in add_role_ids:
             role = message.guild.get_role(role_id)
             add_roles.append(role)
-            added_role_names.append(role.name)
+            added_role_names.append(role.mention)
 
         if len(add_roles):
             await message.author.add_roles(*add_roles, reason="自己紹介での自動役職付与")
