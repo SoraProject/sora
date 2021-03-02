@@ -31,6 +31,7 @@ class Cog(commands.Cog):
         add_roles = []
 
         def check_rank_sentence(base_content, rank_name):
+            print(f"{base_content},{rank_name}")
             if rank_name in base_content:
                 return True
             return False
@@ -50,7 +51,7 @@ class Cog(commands.Cog):
         if len(add_roles):
             await message.author.add_roles(*add_roles, reason="自己紹介での自動役職付与")
             sentence = f"自己紹介の文からランクを検知して以下のランク役職を付与しました。\n" \
-                       f"{[f'`{i}` ' for i in added_role_names]}\n" \
+                       f"{','.join(added_role_names)}\n" \
                        f"⚠間違いがある場合はお手数ですが <#807586753300660264>で再設定を行ってください。"
             embed = discord.Embed(description=sentence, colour=0xff8566)
             embed.set_footer(text="このメッセージは15秒後に削除されます。")
