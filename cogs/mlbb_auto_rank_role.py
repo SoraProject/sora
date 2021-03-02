@@ -21,6 +21,7 @@ class Cog(commands.Cog):
 
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
+
         if not message.channel.id == self.introduction_channel_id:
             return
 
@@ -46,7 +47,7 @@ class Cog(commands.Cog):
             add_roles.append(role)
             added_role_names.append(role.name)
 
-        if not len(add_roles):
+        if len(add_roles):
             await message.author.add_roles(*add_roles, reason="自己紹介での自動役職付与")
             sentence = f"自己紹介の文からランクを検知して以下のランク役職を付与しました。\n" \
                        f"{[f'`{i}` ' for i in added_role_names]}\n" \
