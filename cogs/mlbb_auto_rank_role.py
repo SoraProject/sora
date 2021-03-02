@@ -13,7 +13,7 @@ class Cog(commands.Cog):
             ("レジェンド", "レジェ"): 807577433221496862,
             ("エピック", "エピ"): 807577433221496862,
             ("グランドマスター", "グラマス"): 807577449310453790,
-            ("マスター", "マス"): 807577450128080936,
+            ("マスター",): 807577450128080936,
             ("エリート", "エリ"): 807577450905075722,
             ("ウォーリア",): 807577451957583882
         }
@@ -35,10 +35,14 @@ class Cog(commands.Cog):
                 return True
             return False
 
+        def remove_rank_sentence(base_content, rank_name):
+            return base_content.replace(rank_name, "")
+
         for rank_names, rank_role_id in self.rank_dir.items():
 
             for rank_name in rank_names:
                 if check_rank_sentence(base_content, rank_name):
+                    base_content = remove_rank_sentence(base_content, rank_name)
                     add_role_ids.append(rank_role_id)
                     break
 
