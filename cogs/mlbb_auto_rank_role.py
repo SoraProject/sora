@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import asyncio
 
+
 class Cog(commands.Cog):
 
     def __init__(self):
@@ -57,3 +58,5 @@ class Cog(commands.Cog):
             await msg.delete()
 
 
+def setup(bot):
+    bot.add_cog(Cog(bot))
