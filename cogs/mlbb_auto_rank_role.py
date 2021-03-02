@@ -15,7 +15,7 @@ class Cog(commands.Cog):
             ("グランドマスター", "グラマス"): 807577449310453790,
             ("マスター", "マス"): 807577450128080936,
             ("エリート", "エリ"): 807577450905075722,
-            ("ウォーリア"): 807577451957583882
+            ("ウォーリア",): 807577451957583882
         }
         self.introduction_channel_id = 807581526026879016
 
@@ -31,7 +31,6 @@ class Cog(commands.Cog):
         add_roles = []
 
         def check_rank_sentence(base_content, rank_name):
-            print(f"{base_content},{rank_name}")
             if rank_name in base_content:
                 return True
             return False
