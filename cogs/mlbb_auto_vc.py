@@ -33,7 +33,7 @@ class MlbbAutoVc(commands.Cog):
 
         rank_vc_id = 807784369166352384
         match_vc_id = 807784449067843584
-        talk_vc_id = 808647004410478592
+        talk_vc_id = 823151131903131648
 
         rank_vc: discord.VoiceChannel = self.bot.get_channel(rank_vc_id)
         match_vc: discord.VoiceChannel = self.bot.get_channel(match_vc_id)
