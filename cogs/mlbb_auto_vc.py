@@ -40,7 +40,7 @@ class MlbbAutoVc(commands.Cog):
         talk_vc: discord.VoiceChannel = self.bot.get_channel(talk_vc_id)
         author_channel: discord.VoiceChannel = member.voice.channel
 
-        if author_channel == rank_vc or match_vc or talk_vc:
+        if author_channel == rank_vc or match_vc or talk_vc and not before.channel:
 
             global reaction_list
             if author_channel == match_vc or rank_vc:
