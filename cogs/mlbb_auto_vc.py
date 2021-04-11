@@ -33,7 +33,7 @@ class MlbbAutoVc(commands.Cog):
 
         rank_vc_id = 807784369166352384
         match_vc_id = 807784449067843584
-        talk_vc_id = 823151131903131648
+        talk_vc_id = 830607053609107496
 
         rank_vc: discord.VoiceChannel = self.bot.get_channel(rank_vc_id)
         match_vc: discord.VoiceChannel = self.bot.get_channel(match_vc_id)
@@ -42,12 +42,7 @@ class MlbbAutoVc(commands.Cog):
 
         if author_channel == rank_vc or match_vc or talk_vc and not before.channel:
 
-            global reaction_list
-            if author_channel == match_vc or rank_vc:
-                limit = 5
-
-            else:
-                limit = None
+            limit = None
 
             if member.nick:
                 ch_name = member.nick
